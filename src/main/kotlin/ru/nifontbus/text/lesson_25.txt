@@ -1,0 +1,787 @@
+Hi, let us look at how data is posted to
+
+the route endpoint.
+
+From the request, we can collect raw body data.
+
+There are utility functions that can help us collectec right
+
+type of data on the call object if we want
+
+to bytereadchannel then we can get one of those
+
+with the call or receive channel.
+
+And here we can go through and read the body
+
+byte by byte.
+
+We can get a string returned with the cord that
+
+received text function.
+
+We can get an input stream with the receive stream.
+
+Need to be aware that this is a synchronous and
+
+this will actually block the thread,
+
+so this is not recommended to use this.
+
+Actually we can also get multiplepartdata returned.
+
+For instance, we can upload on file that would usually
+
+be done within [REMOVED] part data.
+
+And we can get one of those with the colt
+
+or perceived multipart function form parameters.
+
+Data posted from a form can be extracted with the
+
+function called that receive parameters on the parameters.
+
+We can then get the key that we are looking
+
+for and then we will get the value or values
+
+with armor values.
+
+At type objects. We already know about this because we
+
+have been looking into the content negotiation feature.
+
+This means that we can get the body and then
+
+we can do that by giving the type as a
+
+generic.
+
+Of course we need to install a constant negotiation feature
+
+as we have seen earlier.
+
+In this case, the Teason Contina Gotiations feature we are
+
+implementing and we also need to add to our build
+
+gradle file the line implementation and then the dependency needed
+
+cookies.
+
+Cookie is sent in the header from the client can
+
+be accessed with cold up request to cookies.
+
+Just like in this example,
+
+right here and we could get a specific cookie by
+
+just giving the name.
+
+In the square brackets, uploading a file and Walter part
+
+can be received with the call that received multiple function.
+
+Ktor has sufficient documentation has an excellent implementation which is
+
+located at this URL that you see right here.
+
+And it consists of two parts.
+
+The first part is to receive the multi part and
+
+the 2nd part is to go through each room which
+
+apart and then handle that and then write it to
+
+a file on the disk.
+
+Let us write some code.
+
+First of all, I've created this and prepared this project
+
+by pressing file new project.
+
+I ticked off content negotiation.
+
+And routing routing right there.
+
+And the decent constant negotiation.
+
+Then I press next next finish,
+
+and then I ended up with this project right here.
+
+I have been prepared some endpoints and all of his
+
+employees are posts because now we want to look at
+
+how to post data to or application the first one.
+
+This is Justin texts and here we are receiving the
+
+text as a string and we do that by just
+
+holding the received text function on the call object.
+
+Then I'm printing out the text to the console and
+
+then our responding the same text as we actually posted.
+
+It is always a good idea to respond something so
+
+the client knows that everything went fine,
+
+and. But whatever has been posted actually was treated and
+
+valid.
+
+Let us try to start the server and try to
+
+text endpoint.
+
+The show was not running and I've prepared a curl
+
+text script right here and here.
+
+We are sending the data.
+
+This is some data that we post to the text
+
+in Point and here we have the endpoint right here,
+
+but we write minus T and when we curled and
+
+I do not need to write that it's posts that
+
+is implicit.
+
+So I ran the curl script and we got this
+
+text returned.
+
+Thank you we received and then this is some data
+
+that we post to the technical point.
+
+Let us go and look in the server log.
+
+We can actually see here we have a line that
+
+says text received.
+
+And then this is some data that we post to
+
+the text in point.
+
+Very good.
+
+Let us try to look at form data and parameters.
+
+I've created this endpoint right here which is sliced form
+
+and here we are getting all the parameters.
+
+By calling call.receive parameters.
+
+And then I looked through each parameter by name.
+
+That means that is the key.
+
+And then I take the out the value with the
+
+parameters that get and then the value for the each
+
+name.
+
+And then I printed out into the console.
+
+We're not done. Then I actually response some text.
+
+Thank you for the font data.
+
+Let us see how that works.
+
+The waiter posts found data with curl is to write
+
+minus F for font data.
+
+Then we will also kept the right,
+
+he replied. Adding minus be here for the both,
+
+so we get some more information about what is going
+
+on and you can see here I have three pieces
+
+of data,
+
+username Mike password, my password and the role admin so
+
+it's 3 pieces of data is sent to the server.
+
+Let us one of the file.
+
+Thank you for the data that's right there.
+
+And here we can see what's going on.
+
+We have a multi parts.
+
+This is a content type,
+
+multiple font data and then what we cannot see that
+
+is the streaming of the data to the back end.
+
+Let us go to the console and see what happens
+
+there.
+
+Here we have it. We do not have a a
+
+new line,
+
+but we have the key.
+
+Username value Mike. The key password entered the value my
+
+password.
+
+Then we have the key role and the value admin.
+
+So we got all the data that we actually wanted
+
+in the back end.
+
+And.
+
+Let us look at the file.
+
+So if you want to post and upload a fire.
+
+That can be done with the multi parts by posting
+
+it with multipart data as much about data.
+
+And the way we get this with the cold received
+
+much apart and this implementation.
+
+That has been taken from the official documentation from ktor.io.
+
+There's really good implementation right here,
+
+and I recommend that you use this if you want
+
+to upload a file.
+
+He would have for each part.
+
+And then we have. Write to disk part right down
+
+here.
+
+So I mean there's two paths in this implementation right
+
+here.
+
+Let's go back to the project.
+
+First of all, this is the title.
+
+That means this is the name of the file.
+
+This is my upload directory and I've said this to
+
+upload,
+
+which is the folder I've created right here in the
+
+left side.
+
+And then I go through each parts in the mood
+
+spot.
+
+The payload cause we can actually have multiple files also
+
+if that's what we want.
+
+And then we say, when and then it's part right
+
+here.
+
+And then we say, is it font later?
+
+Yeah OK. If it is a form item.
+
+If it's for my item.
+
+The check is at the title.
+
+Then set the title to the value.
+
+If it is a file item.
+
+Then we take the file and then we use the.
+
+The function that we just created.
+
+Under the carpet to suspense and then we will write
+
+the file to disk,
+
+which is happening down in this function right here.
+
+But let's see if it works in practice.
+
+Oh, now go to curl file as a script that
+
+I prepared.
+
+I've created my file .60 right here and I have
+
+a lot of test lines.
+
+1 two test, one test 2 etc.
+
+Up to test 14. So I would like to upload
+
+this file and then I would expect that it ends
+
+up in the upload folder.
+
+Curled file and again here I'm using -F because this
+
+is font data actually.
+
+And then I set file equals and then the whole
+
+content of the file.
+
+When I use the at sign right here then curl
+
+will place the content of the file.
+
+So this will be replaced with the content instead.
+
+Let us try it out.
+
+Run the curl scripts.
+
+Your file has been installed.
+
+There's very good. Let's try to look at the upload
+
+folder.
+
+Upload and in the log number.
+
+This is the time in milliseconds.
+
+And here we can see we have the exact same
+
+data,
+
+so the finest been uploaded as expected.
+
+I hope you will follow me in the next video
+
+which is about basic authentication on chosen endpoints.
+
+Hi, let us look at how data is posted to
+
+the route endpoint.
+
+From the request, we can collect raw body data.
+
+There are utility functions that can help us collectec right
+
+type of data on the call object if we want
+
+to bytereadchannel then we can get one of those
+
+with the call or receive channel.
+
+And here we can go through and read the body
+
+byte by byte.
+
+We can get a string returned with the cord that
+
+received text function.
+
+We can get an input stream with the receive stream.
+
+Need to be aware that this is a synchronous and
+
+this will actually block the thread,
+
+so this is not recommended to use this.
+
+Actually we can also get multiplepartdata returned.
+
+For instance, we can upload on file that would usually
+
+be done within [REMOVED] part data.
+
+And we can get one of those with the colt
+
+or perceived multipart function form parameters.
+
+Data posted from a form can be extracted with the
+
+function called that receive parameters on the parameters.
+
+We can then get the key that we are looking
+
+for and then we will get the value or values
+
+with armor values.
+
+At type objects. We already know about this because we
+
+have been looking into the content negotiation feature.
+
+This means that we can get the body and then
+
+we can do that by giving the type as a
+
+generic.
+
+Of course we need to install a constant negotiation feature
+
+as we have seen earlier.
+
+In this case, the Teason Contina Gotiations feature we are
+
+implementing and we also need to add to our build
+
+gradle file the line implementation and then the dependency needed
+
+cookies.
+
+Cookie is sent in the header from the client can
+
+be accessed with cold up request to cookies.
+
+Just like in this example,
+
+right here and we could get a specific cookie by
+
+just giving the name.
+
+In the square brackets, uploading a file and Walter part
+
+can be received with the call that received multiple function.
+
+Ktor has sufficient documentation has an excellent implementation which is
+
+located at this URL that you see right here.
+
+And it consists of two parts.
+
+The first part is to receive the multi part and
+
+the 2nd part is to go through each room which
+
+apart and then handle that and then write it to
+
+a file on the disk.
+
+Let us write some code.
+
+First of all, I've created this and prepared this project
+
+by pressing file new project.
+
+I ticked off content negotiation.
+
+And routing routing right there.
+
+And the decent constant negotiation.
+
+Then I press next next finish,
+
+and then I ended up with this project right here.
+
+I have been prepared some endpoints and all of his
+
+employees are posts because now we want to look at
+
+how to post data to or application the first one.
+
+This is Justin texts and here we are receiving the
+
+text as a string and we do that by just
+
+holding the received text function on the call object.
+
+Then I'm printing out the text to the console and
+
+then our responding the same text as we actually posted.
+
+It is always a good idea to respond something so
+
+the client knows that everything went fine,
+
+and. But whatever has been posted actually was treated and
+
+valid.
+
+Let us try to start the server and try to
+
+text endpoint.
+
+The show was not running and I've prepared a curl
+
+text script right here and here.
+
+We are sending the data.
+
+This is some data that we post to the text
+
+in Point and here we have the endpoint right here,
+
+but we write minus T and when we curled and
+
+I do not need to write that it's posts that
+
+is implicit.
+
+So I ran the curl script and we got this
+
+text returned.
+
+Thank you we received and then this is some data
+
+that we post to the technical point.
+
+Let us go and look in the server log.
+
+We can actually see here we have a line that
+
+says text received.
+
+And then this is some data that we post to
+
+the text in point.
+
+Very good.
+
+Let us try to look at form data and parameters.
+
+I've created this endpoint right here which is sliced form
+
+and here we are getting all the parameters.
+
+By calling call.receive parameters.
+
+And then I looked through each parameter by name.
+
+That means that is the key.
+
+And then I take the out the value with the
+
+parameters that get and then the value for the each
+
+name.
+
+And then I printed out into the console.
+
+We're not done. Then I actually response some text.
+
+Thank you for the font data.
+
+Let us see how that works.
+
+The waiter posts found data with curl is to write
+
+minus F for font data.
+
+Then we will also kept the right,
+
+he replied. Adding minus be here for the both,
+
+so we get some more information about what is going
+
+on and you can see here I have three pieces
+
+of data,
+
+username Mike password, my password and the role admin so
+
+it's 3 pieces of data is sent to the server.
+
+Let us one of the file.
+
+Thank you for the data that's right there.
+
+And here we can see what's going on.
+
+We have a multi parts.
+
+This is a content type,
+
+multiple font data and then what we cannot see that
+
+is the streaming of the data to the back end.
+
+Let us go to the console and see what happens
+
+there.
+
+Here we have it. We do not have a a
+
+new line,
+
+but we have the key.
+
+Username value Mike. The key password entered the value my
+
+password.
+
+Then we have the key role and the value admin.
+
+So we got all the data that we actually wanted
+
+in the back end.
+
+And.
+
+Let us look at the file.
+
+So if you want to post and upload a fire.
+
+That can be done with the multi parts by posting
+
+it with multipart data as much about data.
+
+And the way we get this with the cold received
+
+much apart and this implementation.
+
+That has been taken from the official documentation from ktor.io.
+
+There's really good implementation right here,
+
+and I recommend that you use this if you want
+
+to upload a file.
+
+He would have for each part.
+
+And then we have. Write to disk part right down
+
+here.
+
+So I mean there's two paths in this implementation right
+
+here.
+
+Let's go back to the project.
+
+First of all, this is the title.
+
+That means this is the name of the file.
+
+This is my upload directory and I've said this to
+
+upload,
+
+which is the folder I've created right here in the
+
+left side.
+
+And then I go through each parts in the mood
+
+spot.
+
+The payload cause we can actually have multiple files also
+
+if that's what we want.
+
+And then we say, when and then it's part right
+
+here.
+
+And then we say, is it font later?
+
+Yeah OK. If it is a form item.
+
+If it's for my item.
+
+The check is at the title.
+
+Then set the title to the value.
+
+If it is a file item.
+
+Then we take the file and then we use the.
+
+The function that we just created.
+
+Under the carpet to suspense and then we will write
+
+the file to disk,
+
+which is happening down in this function right here.
+
+But let's see if it works in practice.
+
+Oh, now go to curl file as a script that
+
+I prepared.
+
+I've created my file .60 right here and I have
+
+a lot of test lines.
+
+1 two test, one test 2 etc.
+
+Up to test 14. So I would like to upload
+
+this file and then I would expect that it ends
+
+up in the upload folder.
+
+Curled file and again here I'm using -F because this
+
+is font data actually.
+
+And then I set file equals and then the whole
+
+content of the file.
+
+When I use the at sign right here then curl
+
+will place the content of the file.
+
+So this will be replaced with the content instead.
+
+Let us try it out.
+
+Run the curl scripts.
+
+Your file has been installed.
+
+There's very good. Let's try to look at the upload
+
+folder.
+
+Upload and in the log number.
+
+This is the time in milliseconds.
+
+And here we can see we have the exact same
+
+data,
+
+so the finest been uploaded as expected.
+
+I hope you will follow me in the next video
+
+which is about basic authentication on chosen endpoints.

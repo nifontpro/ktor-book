@@ -1,0 +1,215 @@
+Hi, let us talk about callLogging and how to log
+
+incoming requests.
+
+The call log in feature enables us to log each
+
+request.
+
+It enables us to choose the routes for which we
+
+want to enable logging.
+
+The callLogging is useful for finding errors in production where
+
+we can target the logging into the routes where we
+
+expect that we could end up with a logical error.
+
+Of course it is also useful for debugging while developing
+
+installation installer feature with the install function just like the
+
+other features that we have seen.
+
+Configuration we can configure the feature with filters and log
+
+level just like in this example.
+
+Here we set the lock level to info.
+
+That means that all the requests will be locked with
+
+the level info . Furtherdown we're filtering the routes that
+
+we want to enable blocking for.
+
+We can have as many filter functions as we want.
+
+Let us write some code.
+
+I've created this project. By pressing file new project.
+
+I ticked off ktor. I chose callLogging.
+
+And routing and oppressed next next finish.
+
+and I ended up with this project right here.
+
+So let us look at the application.kt file.
+
+First of all, we installing the call log in feature
+
+right here.
+
+I've set the level 2 info.
+
+I'm filtering this feature only to work.
+
+Under route which starts with CallLogging.
+
+Here is my routes. I have a route route which
+
+just returns hello world.
+
+And then I have this callLogging test route right here.
+
+Let's try to start the server and see what happens.
+
+The servers now started first of all let us run
+
+a curl script against the route like this we get
+
+Hello World returned.
+
+And let us look in log.
+
+Nothing in the lock. And that is because callLogging is
+
+not enabled for the route.
+
+Could see that right here.
+
+Let us try to call the core logging in point.
+
+Let's run this code script right here.
+
+CallLoggin tests. Test 1 two three years returned.
+
+And that is also because we have to find it
+
+so right here,
+
+let's try to see it how the server log looks
+
+like.
+
+Now I got 200 OK and this is the requests.
+
+So we get the requests and also the response code
+
+right there.
+
+I hope you will follow me in the next video
+
+which is about metric statistics under on the usage of
+
+the end points.
+
+Hi, let us talk about callLogging and how to log
+
+incoming requests.
+
+The call log in feature enables us to log each
+
+request.
+
+It enables us to choose the routes for which we
+
+want to enable logging.
+
+The callLogging is useful for finding errors in production where
+
+we can target the logging into the routes where we
+
+expect that we could end up with a logical error.
+
+Of course it is also useful for debugging while developing
+
+installation installer feature with the install function just like the
+
+other features that we have seen.
+
+Configuration we can configure the feature with filters and log
+
+level just like in this example.
+
+Here we set the lock level to info.
+
+That means that all the requests will be locked with
+
+the level info . Furtherdown we're filtering the routes that
+
+we want to enable blocking for.
+
+We can have as many filter functions as we want.
+
+Let us write some code.
+
+I've created this project. By pressing file new project.
+
+I ticked off ktor. I chose callLogging.
+
+And routing and oppressed next next finish.
+
+and I ended up with this project right here.
+
+So let us look at the application.kt file.
+
+First of all, we installing the call log in feature
+
+right here.
+
+I've set the level 2 info.
+
+I'm filtering this feature only to work.
+
+Under route which starts with CallLogging.
+
+Here is my routes. I have a route route which
+
+just returns hello world.
+
+And then I have this callLogging test route right here.
+
+Let's try to start the server and see what happens.
+
+The servers now started first of all let us run
+
+a curl script against the route like this we get
+
+Hello World returned.
+
+And let us look in log.
+
+Nothing in the lock. And that is because callLogging is
+
+not enabled for the route.
+
+Could see that right here.
+
+Let us try to call the core logging in point.
+
+Let's run this code script right here.
+
+CallLoggin tests. Test 1 two three years returned.
+
+And that is also because we have to find it
+
+so right here,
+
+let's try to see it how the server log looks
+
+like.
+
+Now I got 200 OK and this is the requests.
+
+So we get the requests and also the response code
+
+right there.
+
+I hope you will follow me in the next video
+
+which is about metric statistics under on the usage of
+
+the end points.

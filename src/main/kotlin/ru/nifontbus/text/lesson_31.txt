@@ -1,0 +1,419 @@
+In this section we will look at Persisting Data with
+
+MongoDB,
+
+starting up a mongoDB with Docker compose,
+
+ and adding the mongo DB Dependencies to the project .f
+
+First of all MongoDB is a NoSQL database.
+
+This means that it actually stores JSON or Jason documents
+
+in the Mongo database in something called collections.
+
+It is very flexible and easy to use since it
+
+can contain anything.
+
+It is released under the Server Side Public License.
+
+SSPL which is based on the GNU General Public License
+
+version 3.
+
+This means that we can actually use it.
+
+It has a docker image that we can use out
+
+of the box.
+
+The software needed to run the mongo DB as a
+
+docker container.
+
+We need docker offcourse,
+
+Docker is the container engine that we will use in
+
+this course.
+
+We're using the docker community edition and the latest version.
+
+We need Docker compose again,
+
+use the latest version.
+
+The installation procedure is a bit different on every operating
+
+system,
+
+but both Docker and Docker compose is available for Mac
+
+OS,
+
+windows and Linux.
+
+Like Ubuntu or Linux Mint for instance.
+
+Docker compose we will use a docker composed of YML
+
+file to start and stop the mongo DB.
+
+The file looks a bit like this.
+
+First we have a version of the docker compose content.
+
+Then we're mentioning some services and here we are having
+
+myMongo and there we have an image and we're using
+
+Mongo and the latest Docker image.
+
+We are exposing the ports 27017 and that is because
+
+then we can connect to it.
+
+From all application we need to add the dependency to
+
+the build gradle file and the current version is 3.12
+
+dot three and this is so we can access the
+
+Mongo database. Sitting up a MongoClient.
+
+We need to configure mungle client and register a Pojo
+
+Codec Registry to convert the objects to be sent documents
+
+and the other way around.
+
+The code looks a little bit like this,
+
+but do not worry, we need to set this up
+
+once and then it runs.
+
+If we have a mongo database distributed on another server,
+
+then we need to set the connection string on the
+
+Mongo client settings builder.
+
+Right now we're just using localhost,
+
+so that means we do not need to provide a
+
+connection string cause local host and port 27 zero 17
+
+is the local port and host.
+
+Now let us write some code.
+
+I have prepared this project right here.
+
+The first thing we should look at is the docker
+
+compose yml file.
+
+This is what will actually give us local mongo database
+
+that we can use for development.
+
+Here we can see we have the version we have
+
+the services part and we have the name.
+
+We can type whatever name we want to type right
+
+here.
+
+And we have an image right now using the Mongo
+
+and then the latest version.
+
+We need to expose port 27017.
+
+Or else we cannot reach it for my application.
+
+So let us start this docker container.
+
+It is quite easy to navigate to the script folder.
+
+I've already done this in this terminal right here.
+
+And then rewrite Docker compose.
+
+And up. If you want to run it as a
+
+daemon,
+
+then we also add -D for daemon.
+
+This means that if I'm breaking this console right now,
+
+then. If I Press CTRL C then everything stops,
+
+but if I run it as a daemon then it
+
+will run in the background.
+
+It is up and running now without any problems so.
+
+Let us. Try to use it.
+
+First of all, let us look at the dependencies that
+
+we have added.
+
+I have my mongo DB driver right here,
+
+312, three and then. I have chosen to use the
+
+action in this example right here.
+
+Orelse everything is actually.
+
+Yeah, just like we used to.
+
+In our application.kt file.
+
+Right here we can see that I have setup at
+
+Munko Data Handler.
+
+This is my own class so I could have named
+
+it anything.
+
+Some people also like to name IT service instead like
+
+Mongo.
+
+Data service doesn't matter. It could also be spaceship data
+
+handler since this data handle right here handles the spaceship,
+
+that means that the persistent in among the database and
+
+they can also extract them from the Mongo database collections
+
+again.
+
+But nevertheless I have declared a mongo data handle right
+
+here and I'm using that in the end point,
+
+all ships right here and here.
+
+I'm responding with whatever result I'm getting from the old
+
+space ships function.
+
+So let us try to go and see how that
+
+class looks like.
+
+Here we have them uncle data handler.
+
+I have declared it database right here.
+
+I have to clear space ship collection right here with
+
+the type spaceship.
+
+So that means that this collection only contains spaceships.
+
+And the reason why we do this is because then
+
+we can have a Pojo Codec Registry right here that we
+
+set up right here.
+
+And that can actually converts the spaceship into  and.
+
+Here we are building their clients.
+
+The mongo DB clients.
+
+And if you want to set a new.
+
+Connection strength then we can just say apply.
+
+Connection string like this and then I can give a
+
+string like localhost on my server or whatever,
+
+but right now is is OK with the default values
+
+because I use localhost and I use port 27 zero
+
+17.
+
+Here I'm giving the database I've chosen to name this.
+
+There will also be developments,
+
+so it's a bit easier to read like this development.
+
+And of course we could configure this in place this
+
+in a configuration file if you wanted to do that
+
+instead.
+
+But right now we are focusing on getting started,
+
+so here we have the spaceship collection.
+
+I'm getting the collection and here I need to give
+
+a name.
+
+This is the name logical name it will have in
+
+the collection name will have in the Mongo database server.
+
+And then for the more we need to attach a
+
+type.
+
+This is the class type.
+
+The object type. That we want to store inside this
+
+collection right here.
+
+And that means that then the Pocho.
+
+Kotick register can income convert this automatically force?
+
+Then I initialize some space right here.
+
+So whenever I start up my application then I create
+
+4 space ships like this.
+
+And then I can return all my space ships right
+
+here.
+
+Is actually still returning, but we find.
+
+And of course, it is a list of Spaceships.
+
+List. Spaceship.
+
+And we can use now the spaceship collection,
+
+and then we called find on the Mongo database.
+
+And since we have no criteria on the find,
+
+that means that they will get all the space ships
+
+that are located inside their collection.
+
+Then I'm going through each of them and just printing
+
+them out.
+
+This is just for Dipak reasons I'm doing this.
+
+I'll delete this code. Of course whenever I feel confident
+
+that everything works as it should,
+
+and then I return monger result.
+
+This is an ether item,
+
+so we need to call to list on the iterative.
+
+Let us try to run application and see if it
+
+works.
+
+Now the application started. Let us just wait a little
+
+bit because we can actually see that we get a
+
+lot of output regarding the connection to the Mongo database.
+
+Like this right now we can see the checking status
+
+of the Mongol database and everything looks fine and all
+
+that.
+
+So we get some more output.
+
+Can be turned off with the block level.
+
+Right now this is lock level debug and here we
+
+have the classes that are out.
+
+Putting it that is the mongo driver.
+
+Let us start up a browser.
+
+First of all, yes, hello world,
+
+that works. So so far so good.
+
+There's right all ships.
+
+Like this and now I get all my ships.
+
+the ID is converted cause this is an object ID.
+
+This is BSON ID that we get from Mongo for
+
+Mongo DB.
+
+Then we have the name.
+
+This is our own values and then we have fuel.
+
+And again, we have not even fuel test tool tests
+
+fall.
+
+So it's fine. It actually works.
+
+We are up and running.
+
+Yeah, we're connected to them.
+
+Uncle database. The last thing that I could show is
+
+the spaceship class that we have right here.
+
+It is defined as an object ID.
+
+We have a name right here.
+
+We have a fuel right here and when we create
+
+data class like this,
+
+we also need to create an empty constructor and that
+
+is because or else the Pocho Converter cannot convert it
+
+into types or into the sun.
+
+So we need an empty constructor like this secondary constructor
+
+that then Kalser Primary constructor like that.
+
+The primary constructor is the one that we see up
+
+here in our data class.
+
+So that's actually it's. I hope you will follow me
+
+next video where we will focus on inserting data to
+
+the Mongo database.

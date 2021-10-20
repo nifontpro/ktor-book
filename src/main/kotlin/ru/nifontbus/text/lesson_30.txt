@@ -1,0 +1,249 @@
+Hi let us work a bit more on our book
+
+store application.
+
+Let us add error handling,
+
+basic authentication and some call logging.
+
+So the purpose of this exercise is to add error
+
+handling which will result in different HTTP status codes.
+
+To begin with we will just use one internal server
+
+error.
+
+And also we want to add basic authentication to all
+
+the API endpoints.
+
+We also want to add request logging and this applies
+
+to all routes.
+
+The log level we want to choose here is info.
+
+Let us write some code.
+
+This is a book store application I have prepared some
+
+call first of all in the application.kt file.
+
+I've inserted the status pages feature right here.
+
+I'm installing it right right there.
+
+So that means that then I can choose from an
+
+exception type.
+
+Then I can choose and returns some kind of HTTP
+
+code.
+
+In this situation I just want to return internal server
+
+error no matter what happens in the application.
+
+This is just so we have something to start from.
+
+The location were already installed.
+
+We did that in the last section.
+
+I've installed the call locking right here.
+
+And you can see that we are actually logging all
+
+the calls for all endpoints.
+
+Just need to start with forward slash.
+
+Then I have created two lists of users,
+
+one for Shoppers and one for administrators.
+
+Then I've installed basic authentication right here,
+
+and I've made my configuration bookstore off.
+
+This is important for later use.
+
+The realm this is good for.
+
+Giving a good error message when we returned with forbidden.
+
+Validate This is why we choose if we should return
+
+the principles,
+
+which means that we are authenticated or if we should
+
+return null.
+
+In our case, we're looking through the users list.
+
+That means this list up here if the name is
+
+inside the user lists or inside the admins lists.
+
+And the password equals to password.
+
+Then we're returning the user id principle and that means
+
+that we are authenticated.
+
+Or else we will turn out,
+
+which means that we are not authenticated and then we
+
+will not have access to the resource.
+
+We have the content Association right here and I've said
+
+pretty printing function right here,
+
+calling death so we get some good Jason Response.
+
+On the routing, most of the routes has been removed
+
+except for the books that we have defined in the
+
+book routes,
+
+we will look at that in just a minute.
+
+I have left. The routes so we can always get
+
+a hello world.
+
+And this is not authenticated so that we do not
+
+need to have any authentication to try this route right
+
+here.
+
+Then I've added a try authentication route right here.
+
+This is good for testing if the authentication has been
+
+set up correctly.
+
+In this response response with some text and then we
+
+also returned the principle name.
+
+On the book routes. I have added to the location
+
+that we already had right here.
+
+Then I have wrapped this in the authenticate bookstore off
+
+configuration which we defined in the application kotlin file.
+
+And here we are using the locations get to actually
+
+respond with all the sorted books.
+
+From the arguments we actually get from the user.
+
+Often the client. That means that we can give sort
+
+by and ascending as arguments.
+
+Let us try to run the application and see how
+
+it looks.
+
+Run application.
+
+The application has started. I've created this cross group right
+
+here where we can get the list of books from
+
+the API.
+
+Let us run the file.
+
+And not get a good response right here.
+
+Get all the books that we have created.
+
+How to grow bananas. How to grow coconuts.
+
+How to grow lemons, etc.
+
+And their sorted by title.
+
+And it is an ascending order.
+
+Let us see what happens if I do not add
+
+the security part.
+
+If I do not add the basic authentication,
+
+which is the username and password in the header.
+
+In a base 64 encoded format,
+
+I've removed their part now,
+
+so let us see what happens.
+
+Now run file.
+
+Will go down to the bottom.
+
+We got no response. We can also try to add
+
+verbose minus V.
+
+We didn't get any response,
+
+but we actually fall one back,
+
+so we did not get any response payload.
+
+That's only thing, and we can I see here now
+
+we have the basic world bookstore which tells us yeah,
+
+well, we're dealing with if we have multiple rooms in
+
+our application.
+
+Then we can ask for permission there in the right
+
+well.
+
+Let us try to go and look at the server
+
+log.
+
+Here we can see since we have enabled the corn
+
+locking then we get 200 OK first then we get
+
+404 one on authorized.
+
+Want to try to get the list because we did
+
+not add the.
+
+Basic authentication. We are not authenticated.
+
+So right now we have an application with an ABI.
+
+Which we have secured basic authentication.
+
+Inside the data manager, we still have all the books
+
+that we.
+
+Initially created in an earlier section.
+
+In the next section we will look at persisting data
+
+with Mongo DB.

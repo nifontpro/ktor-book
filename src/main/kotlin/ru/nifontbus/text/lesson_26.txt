@@ -1,0 +1,379 @@
+Hi, let us talk about basic authentication on chosen endpoints.
+
+First some concepts authentication means to prove that the system
+
+or a person is who he is.
+
+He claims to be. Authorization that it's the right to
+
+perform an action of principle.
+
+A system or person that can be authenticated.
+
+Credentials, username and password or an API key that can
+
+be used to prove the identity of a system or
+
+a person.
+
+The realm this is used in basic authentication to give
+
+more information in an unauthorized response.
+
+This way the client gets a logic name for the
+
+security area.
+
+Supported authentication methods. Ktor supports many authentication methods.
+
+Basic authentication this supplier base 64 encoded username and password
+
+in the hitter.
+
+Form authentication username and password sent us from data.
+
+HTTP digest and  MD5 encrypted username and password.
+
+JWT and JWK Jason Web tokens.
+
+LDAP within basic authentication.
+
+OAuth 1a and 2.0.
+
+Oh how to install the authentication feature.
+
+We install the feature just like we install any other
+
+feature with the install function.
+
+Then we configure the authentication methods with or without a
+
+name.
+
+Just like in this example right here.
+
+We need to implement the validate function.
+
+We can check credentials against values in a database or
+
+against a constant in the validation function.
+
+We need to return the principle IE the user ID
+
+principle.
+
+This examples here shows how first we install authentication feature.
+
+Then we create a new basic authentication with a name.
+
+We have a real name and then we have the
+
+validate function.
+
+The validate function takes Atlanta and in here we need
+
+to return the user ID principle.
+
+If we returned null, then it means that the person
+
+is not or system is not validated.
+
+The user hashed table off.
+
+We can populate a table with usernames and hashed passwords.
+
+We should never store the actual passwords in memory because
+
+they could be leaked,
+
+so only the chased 256 as the passwords are stored
+
+in this example.
+
+We're using assault my security salt to hash all the
+
+passwords.
+
+Authentication at the routes. After installing the authentication feature and
+
+configuring a named authentication method,
+
+then we can map this trouts.
+
+This means that if we invented a name called my
+
+office name one,
+
+then I can reuse this name when I'm defining my
+
+routes and say that these routes should be protected with
+
+authentication.
+
+myAuthname 1.
+
+I can of course also creates or other routes without
+
+any authentication.
+
+Access to the principle in the routes we can access
+
+the principle by calling called or principle.
+
+And in the generic type.
+
+In this example here we get the principle and then
+
+we use the principle name.
+
+In the response.
+
+In this situation, it will say Tia and then the
+
+principle name.
+
+It will be sunny tomorrow.
+
+But let us write some code to make it even
+
+more.
+
+Explicit
+
+I have created a project right here in until Jane
+
+by pressing file new project.
+
+Then I chose cater.
+
+Then I found routing and check that.
+
+And then I selected authentication basic.
+
+I also ticked off Decent Association.
+
+And Content Association.
+
+Then I press next next finish and I ended up
+
+with this project right here.
+
+First of all, let us go to the top where
+
+we are installing the authentication feature.
+
+I'm creating 2. Basic authentication definitions right here,
+
+one with the name, my basic Auth one and another
+
+one with my basic of two.
+
+I am setting a realm so I will get a
+
+meaningful response when I'm not authenticated.
+
+I'm sending this ability 8.
+
+I'm calling validate function with a trailing Lambda.
+
+In here I have a constant.
+
+Then the user name needs to be Mike.
+
+The password needs to be password.
+
+If so, then I'm returning a user principle,
+
+which means that then I will be authenticated.
+
+Or else I returned null and then the client will
+
+not be authenticated and we get the authenticated response.
+
+Kind of the same down here.
+
+We have basic authentication. We have a name and we
+
+have another realm name right here.
+
+I have the validate function right here and in this
+
+situation I just say that the password needs to be
+
+the username and then plus ABC 123.
+
+Then I accept the client.
+
+By returning the user ID principle like this and or
+
+else,
+
+I will reject the client.
+
+Then under routing.
+
+I can then use the function authenticates and here I
+
+can give the same name as I defined early on
+
+my basic authentication one.
+
+Which is right here? My basic auth one?
+
+I'm also using my basic of two to some of
+
+the rows right here,
+
+so that means that I have some routes that used
+
+the first basic authentication.
+
+I have some other routes that use the second basic
+
+authentication.
+
+And then I have some one route that is not
+
+affected by the authentication.
+
+I have a weather forecast route right here.
+
+This will see Dear and then the principle name.
+
+It looks like son tomorrow and we get the principle
+
+right here.
+
+Then I have some 20 colors for next year and
+
+next month which will also return something including the principle
+
+name.
+
+Let us try them out and see how they work
+
+in practice is.
+
+I'll start the server.
+
+Now the service running. I have prepared some curl scripts.
+
+First, let's try the route.
+
+So now I'm just curling the roots.
+
+There's no other basic authentication at this end point right
+
+here,
+
+so without insecurity I will get the response.
+
+Hello world.
+
+The Willow in Point first let us try to access
+
+the weather in Point.
+
+I'm adding minus V for the Bose.
+
+We 1st, I'll try it without any security attached to
+
+the requests.
+
+Those tries to see what happens.
+
+I got a follow one on authorized so that was
+
+a response and because we have set a realm then
+
+we have the room name right here my realm.
+
+This gives me information about what kind of realm that
+
+I was trying to access.
+
+An administrator needed to give me access to this realm.
+
+That can be a lot of realms in an organization.
+
+Let's try this again. This time I'll add the username
+
+and password in the header and base 64 encrypted.
+
+This is done by writing minus U with curl.
+
+Dear Mike, it looks like son tomorrow so I got
+
+the response.
+
+This time it was OK and it was hated Pico
+
+200.
+
+Let us go to the trends.
+
+With the Twins, we said that we wanted to say
+
+that we have a username and the password should be
+
+exactly equal to the username plus ABC 123.
+
+We can then call the endpoints,
+
+so let us try first with the $20.00 for next
+
+week.
+
+20 colors next week.
+
+False or not found. Let us go check it out
+
+20 color.
+
+It is next year and next month.
+
+So that's right next month.
+
+And try again.
+
+This time we got a response high user one.
+
+We think that purple will be the popular next week.
+
+This means that if I change this to Mike instead.
+
+And Mike ABC 123's password.
+
+Then I'll get response when Mike is included.
+
+Hi Mike, we think that purple will be popular next
+
+week.
+
+Then let's try the same for the next year.
+
+This time the password is incorrect.
+
+I have added an extra 2 right here.
+
+Let's see what kind of response we get.
+
+Again, we get the full one on authorized and we
+
+get the real name my other realm.
+
+Let us fix it and see if we can get
+
+a 200 response.
+
+Yes, now we have HTTP code 200 and we gotta
+
+find response right down here.
+
+Hi user1 we think that green will be popular next
+
+year.
+
+I hope you will follow me in the next video
+
+which is about routing interceptors  how to check admin rights.

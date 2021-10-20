@@ -1,0 +1,327 @@
+Hi. Let us improve our bookstore application with a search
+
+endpoint with request parameters.
+
+So what is the purpose
+
+We want to add an end point that can be
+
+used to get and sort books by title or author.
+
+It should be possible to choose if the result should
+
+be in,
+
+ascending or descending order. So the two lists in order
+
+to do this.
+
+We need to add the dependency for the locations feature.
+
+Since we didn't take the off that checkbox the first
+
+time.
+
+We need to add an install the locations feature we
+
+need to create a class with the location annotation on
+
+top.
+
+We need to set the route in the location annotation.
+
+We need to create a method in the data manager
+
+so we can get or assorted result returned.
+
+We need to map get route with the location class
+
+in the get route core and return the result from
+
+the data manager.
+
+Test the endpoint with curl.
+
+So let us write some coat.
+
+When we are in this situation where we want to
+
+add a feature that we did not think that we
+
+wanted it to begin with and this would actually be
+
+quite common and it will happen a lot,
+
+then one way to solve this problem is actually to
+
+go to start cater dot IO.
+
+And then find the feature that we're interested in.
+
+In this situation, we are interested in the location feature.
+
+Then we can press documentation,
+
+which is just a little green.
+
+Just beneath the locations. And then I can Scroll down
+
+a little bit and then I can see here we
+
+have.
+
+Dependencies right there.
+
+And then I can copy this part and then I
+
+can paste it into my builder gradle file.
+
+And this is exactly what I've done right here.
+
+So let me just comment it in.
+
+The next thing we need to do this we need
+
+to then refresh or Gradlel Dependencies.
+
+Or even better, you can also import all of the
+
+Dependencies.
+
+After doing that, we would like to install the location
+
+feature and we do that in their application.kt file.
+
+Let me scroll up a bit.
+
+I have already prepared the installation right here.
+
+Install and then locations and that's accidents.
+
+Another thing I want to enable is it won't want
+
+to set pretty printing on our gson response.
+
+Then it's much easier to test and debug.
+
+All our routes regarding the books are placed in iBooks
+
+function, so I also want to place my location function in
+
+this function right here.
+
+So let's go to it and see how it looks.
+
+As you can see here,
+
+I've already prepared some codes.
+
+I prepared a data class with the location annotation on
+
+top,
+
+so let me comment this one in.
+
+And here we have two arguments sought by and whether
+
+it should be ask ending or not.
+
+And I've also included are out in the location annotation
+
+book lists.
+
+Then we want to create a git mapping and that
+
+is done right here.
+
+This this get webbing right here points to the data
+
+class book list location.
+
+I could not just name it book because we already
+
+have a book class and deck would lead to some
+
+confusion.
+
+I would like to response with.
+
+But it was a data manager gives us and I
+
+would like to give the responsibility to the data manager
+
+to sort this result set.
+
+So let us go through the data manager.
+
+First of all, inside the data manager I would like
+
+to add a longer so I can log what's going
+
+on.
+
+And then I want to add this function right here
+
+which gives us all the books and then it uses
+
+reflection.
+
+This is reflection where we are looking for a member
+
+and we look for the name for the string name
+
+that is returned from the requests.
+
+If the members now that means that then we did
+
+not have that field inside or class.
+
+So then we will log it and then returned all
+
+the books in the default order.
+
+And in this case it is the identify this order
+
+per ID.
+
+In all situation.
+
+Then I have added to two branches right here we
+
+have one if branch that says ascending then we just
+
+called the sorted by and then we use
+
+the member and then it gets.
+
+It's this will give us the value of the field
+
+that we have mentioned up here in the sort by.
+
+And then I'm calling to string.
+
+That means that this will not work with the price,
+
+for instance because the to string method might not be
+
+the same as the actually decimal value.
+
+And he again I called to state.
+
+But in this situation right here I am using the
+
+function sorted by discounting.
+
+So now we have enabled this code.
+
+Let us go back and look at the book routes
+
+and see that now everything is fine,
+
+yes.
+
+Now intelliJ is not complaining about that,
+
+we have a function that was the pointing to a
+
+function that is missing.
+
+Now is actually the.
+
+So the next thing is to create a curl script
+
+which I've created up here so we are curling the
+
+location book lists.
+
+Then we called sort by title and we're setting escalating
+
+to true to begin with.
+
+But we can flip this to false later on.
+
+Let us start application and see if everything works as
+
+expected or.
+
+If something should be changed.
+
+It started up correctly, so that is really good.
+
+Let us try to run the car.
+
+And we already got a result.
+
+So first we have how to grow apples.
+
+Then we have how to grow bananas and because b
+
+comes after a.
+
+Then we have the apples apples before the how to
+
+grow bananas.
+
+Then we have how to grow coconuts.
+
+And as you can see it's not in the id
+
+order which is the default order.
+
+So it means that all sort actually works as it
+
+should.
+
+Then we have the lemons right here and then we
+
+have the oranges.
+
+Then we have the peers.
+
+And then we have the pineapples.
+
+Let us try to flip the escalating to false instead
+
+and let us see which result this gives.
+
+Run the file again.
+
+Now we got the whole of data once again.
+
+I'm just go down at the bottom right here.
+
+Now you can see that the last element is now
+
+how to grow apples.
+
+The second last element is how to grow bananas.
+
+The first lost. The element here is to the coconut
+
+and we can also try with author.
+
+Let's try again.
+
+So now we have Mr.
+
+Appleton as the last one.
+
+We have Mr coconuts as the second last,
+
+or that being third last right here because Mr Appleton
+
+wrote 2 books.
+
+Then we have Mr. Lemon.
+
+Mr. Einstein.
+
+Mr Pierce. Mr. Pineapple.
+
+That's it's so that was how we actually created an
+
+end point.
+
+In the next section we will look at Ktor rest
+
+API in error handling an authentication.

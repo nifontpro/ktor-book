@@ -1,0 +1,293 @@
+Hi, let us talk about routing interceptors and that they
+
+can be used for checking admin rights.
+
+The concepts of pair of incoming request,
+
+an outgoing response that is an application call.
+
+An application cold is passed through an application called pipeline
+
+which consist of a number of Interceptors.
+
+An application called pipeline can also have zero interceptors.
+
+In to set us up invoked one at a time.
+
+An interceptor can choose to let the next interceptor continue
+
+with application call by calling proceed and intercept and choose
+
+to finish the application called and no more interceptors will
+
+then receive the call with the function finish.
+
+The application call pipeline consists of faces,
+
+an interceptor registers to specific phase.
+
+Coke could be run after and before a pipeline proceeds,
+
+just like in this example,
+
+right here. First we have an interception.
+
+Then we have some of our own custom code.
+
+Then we call proceed because we want to allow the
+
+next interceptor to also call its code,
+
+and then we're done with that.
+
+Then we call some more custom code.
+
+The default faces the five main faces will be run
+
+in this order,
+
+set up monitoring features, call and fall back we can
+
+place or custom faces in between these faces if we
+
+wish to let us write some code.
+
+I have created this project by pressing file.
+
+Knew projects
+
+I chose cater.
+
+Then I selected routing.
+
+I selected content negotiation.
+
+Another pressed next, next finished and then I ended up
+
+with this project right here.
+
+So this is a standard project,
+
+will have added a lot of codes.
+
+First of all, we can see we install the content
+
+negotiation feature right up here and then after that I
+
+am adding a lot of Interceptors.
+
+I'm adding an interceptor for each face.
+
+The set up face, the cold face,
+
+the features face the monitoring face and also the fall
+
+back face.
+
+And then I'm locking whenever we reached this face.
+
+That means each call will go through all of these
+
+faces unless.
+
+One of the interceptors while being called.
+
+It will call the finish function.
+
+I'm creating my own pipeline faced right here,
+
+just to show that it is possible.
+
+That I'm inserting it after the call pipeline fees.
+
+Then in the end I'm also intercepting my own new
+
+custom face like this.
+
+Then I'm locking the Yuri.
+
+There's been called and then I say if the you
+
+re contains the word Mike.
+
+Then I will respond with a text.
+
+The endpoint contains Mike and in our finished that means
+
+that the rest of the interceptors are not allowed to
+
+be called.
+
+Fillmore, we have some routing right here.
+
+This is actually also intercept us.
+
+So we have some routing right here and we are
+
+located on the call face.
+
+And here we can see a half.
+
+Are out cold something and then Mike and then another
+
+thing this will respond with the text.
+
+This endpoint is handled by the route.
+
+Have a nice day.
+
+But I also have an online to SEPTA right here
+
+that also tries to handle this endpoint.
+
+So which interceptable win? Let us check it out.
+
+I will start the server by pressing the black button
+
+up on the function name like this.
+
+Now the server has started.
+
+Ants first of all, let us called the root end
+
+point like this run file.
+
+Hello world I got the response and expected but let's
+
+see how it looks on the server side.
+
+Here we have the application set up face first,
+
+monitoring face feature, face call face the Mike face.
+
+Probably also print out. The URL that we tried to
+
+call and this is the root in this case right
+
+here.
+
+Then we have a fall back phase if something went
+
+wrong.
+
+Let us try to call.
+
+Local hosted something and Mike another thing.
+
+Remember, we're capturing this in both of them.
+
+I can't accept it, and also in the route.
+
+Let's see who wins.
+
+The endpoint is handled by the route have-a-nice-day.
+
+So how can this be?
+
+Let us go check.
+
+We can actually see that we got an error right
+
+here,
+
+and that is because we have two different interceptors that
+
+tried to create a response.
+
+First we have the routing,
+
+which is respond this text and that means that response
+
+is already been created.
+
+And the cause?
+
+That the new face that we invented is set to
+
+be called after the call face then.
+
+But the second response right here will then be denied
+
+because we have already created a fine response that will
+
+be returned to the client.
+
+We can try to swap the code,
+
+so instead of inserting the face after then we can
+
+insert the face before let us see if it has
+
+any impact.
+
+This means that this code would be called first because
+
+it is before the call.
+
+And then we have this check right here.
+
+There's a unit, contains Mike.
+
+If yes, then lock it and respond to text.
+
+The endpoint contains Mike instead,
+
+and then I'm calling finish.
+
+That means that the rest of.
+
+Interceptors are not allowed to be called.
+
+Let me restart the server.
+
+There's the server is now being restarted and let's try
+
+to call.
+
+The Scroll Command once again.
+
+This time we get the endpoint contains Mike and that
+
+is because the first,
+
+except that is being run,
+
+is there. This interceptor right here that listens for the
+
+face,
+
+Mike.
+
+And his face the Mike phase before the call phase
+
+and all the routes that if we define down here
+
+the are located in the call face.
+
+Let's try to see the lock how it looks like.
+
+This time we do not get any error because we
+
+are only trying to create one response.
+
+We never get down to this code.
+
+Down here because we are stopping for the rest of
+
+Interceptors we are finishing the pipeline like this week.
+
+All finish right here. So mean to become to the
+
+set up face the monitoring phase the features phase the
+
+Mike phase and then we do not get the rest
+
+of the faces. Because we have an interceptor that finishes
+
+the pipeline right here.
+
+I hope you will follow me in the next video
+
+which is about call logging.
+
+And how to log all incoming requests

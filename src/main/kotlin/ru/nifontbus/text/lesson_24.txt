@@ -1,0 +1,391 @@
+ Feature Status Pages
+
+ In this section we will look at Ktor REST API
+
+ - Error Handling and Authentication.
+
+ The feature StatusPages
+
+ This feature handles exceptions and give more detailed information in
+
+ the response.
+
+ The default handling of a thrown exception leads to an
+
+ internal server error response,
+
+ which is the HTTP status code 500.
+
+ Installation of the StatusPages Feature, the features installed with install
+
+ function,
+
+ just like with all the rest of the features.
+
+ Configuration of StatusPages.
+
+ The feature has three main configuration options,
+
+ Exceptions - Here we can create and map responses based
+
+ on exception classes.
+
+ Status - Here we can create and map responses based
+
+ on the, value and status file.
+
+ Here we can use custom HTML files to show better
+
+ error messages.
+
+ The exceptions configuration, here we can map an exception to
+
+ response.
+
+ In this case, it means that if MyCustomException is thrown
+
+ from any of the routes,
+
+ then we will respond with a text
+
+ "-- a custom error occurred!".
+
+ Each call is only caught by one handler.
+
+ This means that if you're throwing exceptions inside the exception
+
+ handlers, then these will not be handled by the exception handlers.
+
+ And again, this prevents recursive stack calls if the same
+
+ exception is thrown inside own handler.
+
+ The exception handlers will swallow the exception.
+
+ So if you want to see them in the server
+
+ log we need to rethrow them in the end of the
+
+ handler.
+
+ Just like in this example right here, First we say what we want to respond
+
+ with.
+
+ In this case, it's an internal server error
+
+ and then after that we are throwing the calls once
+
+ again.
+
+ Exceptions and redirection - it is possible to redirect the
+
+ client in exception handler.
+
+ We could create our own HttpRedirectException if we wish to,
+
+ and then we can use this to troll the routes
+
+ and then we can use that exception
+
+ to redirect declines to another endpoint.
+
+ The implementation could look like something like this,
+
+ We create a handle for the new HttpRedirectException which is our
+
+ own custom exception and we call the function RespondRedirects() with
+
+ the location and if it should
+
+ be permanent relocated to that location. Status -
+
+ Instead of just returning HTTP status,
+
+ we can create a response with an explanation.
+
+ So that means that if you want to map a
+
+ status code like not found to something that says a
+
+ little bit more than we can do it like this
+
+ implementation right here where we respond with both the value
+
+ code and also the description of what is
+
+ this HTTP status code.
+
+ The status file configuration option.
+
+ This enables us to map
+
+ HTML file to an error.
+
+ So that means. if we have
+
+ a 404 error, then we can return the content of
+
+ my-custom-error404.html.
+
+ The implementation looks something like this, where we're using the
+
+ pound sign instead of the HTTP error code.
+
+ Let us write some code. I have prepared this project
+
+ right here
+
+ And I've created this by pressing file,
+
+ new, projects. I choose Gradle,
+
+ I ticked off status pages (
+
+ right then). Tick off routing,
+
+ Select GSON
+
+ and ContantNegotiation. Than I press next,
+
+ next, finish and I ended up with this project right
+
+ here and then
+
+ I've prepared some code.
+
+ First of all, I've created some new exceptions here in
+
+ the bottom, 3 new exceptions.
+
+ My first exception, my second exception and my third exception,
+
+ and then created three path which doesn't do anything except
+
+ for throwing these exceptions.
+
+ Then I'm installing the StatusPages feature
+
+ which is right here.
+
+ Here first I'm mapping some status files to the location
+
+ customerrors and myerror and then the pound sign which will
+
+ be replaced with the HTTP status code.
+
+ So let us try to look on the resources, it
+
+ needs to be in the classpath,
+
+ So let us try to look at the resources and
+
+ then customerrors and here we can see I have two
+
+ HTML pages which I've just created myself and here
+
+ we have,
+
+ I hit that one which says,
+
+ "whops the page is not there."
+
+ "Try to check the server lock and double check your
+
+ routes..." and I've named his 404 so I'll get this
+
+ message here every time I reach endpoint which has
+
+ not been defined on the routes.
+
+ Then I have created another HTML file which the 500
+
+ HTML page and that is the internal server error.
+
+ So that is if something unexpected happens in a route
+
+ and an exception is thrown from within about and there's
+
+ no exception handler fault,
+
+ then these default page will be shown.
+
+ In his shamil.
+
+ Of course these HTML pages.
+
+ I only used by browsers.
+
+ Furthermore, I have met the exception.
+
+ My first exception to this piece of code right here.
+
+ That means that if I get my first exception down
+
+ in the routes,
+
+ then our respond with the Haiti pea coat on authorized.
+
+ After that I'm locking the error in the lock.
+
+ Fillmore, I'm trying the exception again,
+
+ so that means that I will actually have the air
+
+ twice,
+
+ so let us out comment the logging.
+
+ Of course it is also optional if you want to
+
+ throw the course.
+
+ Once again. We can also just accept that the exception
+
+ handler swallows or consumes the exception.
+
+ But for debugging purposes in my developing it's a good
+
+ idea to throw the exception in the end.
+
+ Then we have my second exception handler right here,
+
+ so every time my second exception is thrown from the
+
+ routes,
+
+ then I will redirect the.
+
+ The client to falsely. That means that I'll just get
+
+ the hello world's message.
+
+ Again, I'm throwing the course in the end right here.
+
+ The third exception mapping. This will result in a text
+
+ response which will save the third exception just happened.
+
+ Please fix it and then,
+
+ uh, Smiley.
+
+ So let us see if it works.
+
+ The server is now starting up.
+
+ I have created some Perl scripts are prepared,
+
+ some curl script. So let us try to go to
+
+ the first.
+
+ This will trigger the first exception and the reason why
+
+ would do that is because when I go to.
+
+ When I reached the first route.
+
+ This is this Rob right here.
+
+ That's only one line of code,
+
+ and it is true my first exception.
+
+ So let us try to run the curl and see
+
+ what happens.
+
+ The response for girl is 4 one authorized and that
+
+ is exactly what we have configured.
+
+ This exception to lead to.
+
+ Let us try with the second exception.
+
+ In this situation, we should be re routed.
+
+ We should be redirected.
+
+ So let us try to use a browser instead the
+
+ situation.
+
+ I'll go to localhost.
+
+ And in second, like this,
+
+ then it should be routed through the route.
+
+ That is exactly what is happening.
+
+ Hello world.
+
+ The third exception.
+
+ This should end up in a text response.
+
+ So let us try to use curl again.
+
+ We have curl the 3rd right here.
+
+ Run to file. And we can see we got those.
+
+ This response right here. The third exception just happened.
+
+ Please fix it and we got a 200 back which
+
+ means OK.
+
+ Let us try to see what we get.
+
+ Is the page does not exists?
+
+ Now we are reaching the Hatemail Pizza.
+
+ We can figure this is the whoops.
+
+ The page is not here and again we can actually
+
+ use a browser to make it more obvious what is
+
+ going on.
+
+ We can write something right here like the snot exists,
+
+ blah blah blah. And then I will get this mirror
+
+ matches right here.
+
+ Whoops, the pages dot here.
+
+ Try to check the server log and double check your
+
+ routes at the same time.
+
+ Let us try to look at the server lock and
+
+ we can see it's full of exceptions,
+
+ so this is all the exceptions that we're throwing.
+
+ Connect to see we get altogether in and my third
+
+ exception right here.
+
+ We just ran idea.
+
+ And then we returned the 200 OK.
+
+ So that was it on status pages and on how
+
+ to handle exceptions.
+
+ I hope you will follow in the next video which
+
+ will be about how we should handle data posted to
+
+ the route endpoint.
+
+

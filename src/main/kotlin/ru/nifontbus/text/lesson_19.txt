@@ -1,0 +1,475 @@
+Hi, let us look at routes with path variables.
+
+We have earlier seen that we can get the path
+
+variable by calling call.parameters.get(...).
+
+However there are locations feature which Maps variables from a
+
+class definition and this is much more convenient and easier
+
+to use.
+
+The locations feature is currently experimental,
+
+but hopefully in near future it will not be.
+
+We need to add the location dependency to the gradle
+
+file.
+
+The feature is installed by calling the install functions,
+
+just like with the rest of the features.
+
+The path variable is mapped by creating a class and
+
+annotating it with @Location.
+
+Inside the annotation we will then set our path.
+
+And our path variable would be in curly brackets.
+
+The class needs to have a field.
+
+An argument in the primary constructor which matches the curly
+
+brackets.
+
+The route.
+
+The route then needs to be met using generics with
+
+the class we annotated with @Location.
+
+Just like this, we can access the class fields on
+
+it objects.
+
+The Nested routes @Location support nested routes and it could
+
+be created with inner classes.
+
+So first we have for instance a class named book.
+
+Inside there we have an author and also a list.
+
+Which are both endpoints that we then map.
+
+Let us write some code I have prepared this project
+
+and I've created it by pressing .
+
+file new project.
+
+I've checked off routing. And locations then I pressed next
+
+next finish.
+
+And it is worth noting that this extra dependency is
+
+has been added to our project,
+
+the Ktor locations.
+
+In application.kt file.
+
+We are installing the feature up here on the install
+
+locations.
+
+Then I've written a little bit of code and.
+
+I've created a new class called MyLocation right here.
+
+I've annotated this class with @Location and then I've given
+
+it a route like location and then the path variable
+
+like name.
+
+And it's worth to note that we have.
+
+An argument to the primary constructor,
+
+also named name, and that is how locations can map
+
+the two together.
+
+I've also cleared an example with them in a class
+
+is so we can have nested routes.
+
+First we have a book inside the book we have
+
+an author an author class and then we have a
+
+list class also inside the book.
+
+Hence worth to note that we actually need to have
+
+the parent class map as the first argument in each
+
+of these classes right here.
+
+So that means that we need to have a reference
+
+to the parent always.
+
+And then we can have extra arguments like this author,
+
+which matches the author variable that we have added in
+
+the path.
+
+When we're done with this then our routing part is
+
+much easier because now we using generics and that means
+
+that then we are also organizing our code a little
+
+bit
+
+better, because now there's no strings right here.
+
+We don't need to think about the mapping.
+
+That is already included, for instance,
+
+on the my locations in point.
+
+Then we can use it that name and that is
+
+because we have.
+
+We have a field named name right here and then
+
+we can print out that.
+
+We can also print out the whole object on a
+
+whole map if we want to.
+
+But if we don't know know which,
+
+which feels that we can actually access,
+
+and that is what we are doing when we are
+
+dealing with the nested routes right here.
+
+So we have the author and we have the list.
+
+That means that, but let's try to start the application
+
+and see how it works.
+
+Run application.
+
+Will go to the default route.
+
+And then we can write book.
+
+And then we can give a subject like or what
+
+it was a category.
+
+We can go down here if we can remember it
+
+then we can see here we need to have first
+
+book then a category.
+
+And then maybe a list to begin with said book
+
+category.
+
+The category could be Flowers.
+
+And then we could have the list.
+
+And it will see what we get there and what
+
+we get returned.
+
+That is the it's and it is a strict representation
+
+from the list object and we can see in here
+
+we have a books and.
+
+Inside the book we have a category with flowers,
+
+so that means that we can actually access it.
+
+That book on the object if that's what we want
+
+to.
+
+We also saw that would actually after category we could
+
+write author.
+
+Let's just go check here.
+
+So we have the author right here.
+
+So let's say that I will mention an author.
+
+And I can write Mike right here.
+
+And then we can see now it gets 2 arguments
+
+that I can access to it.
+
+Book I could also access the author.
+
+So the mapping is object oriented and it's much easier
+
+to access while using @Locations that was it for this
+
+video.
+
+I hope you will follow me in the next video
+
+where we're looking at Routes with Request Parameters.
+
+Again this is about locations.
+
+Hi, let us look at routes with path variables.
+
+We have earlier seen that we can get the path
+
+variable by calling call.parameters.get(...).
+
+However there are locations feature which Maps variables from a
+
+class definition and this is much more convenient and easier
+
+to use.
+
+The locations feature is currently experimental,
+
+but hopefully in near future it will not be.
+
+We need to add the location dependency to the gradle
+
+file.
+
+The feature is installed by calling the install functions,
+
+just like with the rest of the features.
+
+The path variable is mapped by creating a class and
+
+annotating it with @Location.
+
+Inside the annotation we will then set our path.
+
+And our path variable would be in curly brackets.
+
+The class needs to have a field.
+
+An argument in the primary constructor which matches the curly
+
+brackets.
+
+The route.
+
+The route then needs to be met using generics with
+
+the class we annotated with @Location.
+
+Just like this, we can access the class fields on
+
+it objects.
+
+The Nested routes @Location support nested routes and it could
+
+be created with inner classes.
+
+So first we have for instance a class named book.
+
+Inside there we have an author and also a list.
+
+Which are both endpoints that we then map.
+
+Let us write some code I have prepared this project
+
+and I've created it by pressing .
+
+file new project.
+
+I've checked off routing. And locations then I pressed next
+
+next finish.
+
+And it is worth noting that this extra dependency is
+
+has been added to our project,
+
+the Ktor locations.
+
+In application.kt file.
+
+We are installing the feature up here on the install
+
+locations.
+
+Then I've written a little bit of code and.
+
+I've created a new class called MyLocation right here.
+
+I've annotated this class with @Location and then I've given
+
+it a route like location and then the path variable
+
+like name.
+
+And it's worth to note that we have.
+
+An argument to the primary constructor,
+
+also named name, and that is how locations can map
+
+the two together.
+
+I've also cleared an example with them in a class
+
+is so we can have nested routes.
+
+First we have a book inside the book we have
+
+an author an author class and then we have a
+
+list class also inside the book.
+
+Hence worth to note that we actually need to have
+
+the parent class map as the first argument in each
+
+of these classes right here.
+
+So that means that we need to have a reference
+
+to the parent always.
+
+And then we can have extra arguments like this author,
+
+which matches the author variable that we have added in
+
+the path.
+
+When we're done with this then our routing part is
+
+much easier because now we using generics and that means
+
+that then we are also organizing our code a little
+
+bit
+
+better, because now there's no strings right here.
+
+We don't need to think about the mapping.
+
+That is already included, for instance,
+
+on the my locations in point.
+
+Then we can use it that name and that is
+
+because we have.
+
+We have a field named name right here and then
+
+we can print out that.
+
+We can also print out the whole object on a
+
+whole map if we want to.
+
+But if we don't know know which,
+
+which feels that we can actually access,
+
+and that is what we are doing when we are
+
+dealing with the nested routes right here.
+
+So we have the author and we have the list.
+
+That means that, but let's try to start the application
+
+and see how it works.
+
+Run application.
+
+Will go to the default route.
+
+And then we can write book.
+
+And then we can give a subject like or what
+
+it was a category.
+
+We can go down here if we can remember it
+
+then we can see here we need to have first
+
+book then a category.
+
+And then maybe a list to begin with said book
+
+category.
+
+The category could be Flowers.
+
+And then we could have the list.
+
+And it will see what we get there and what
+
+we get returned.
+
+That is the it's and it is a strict representation
+
+from the list object and we can see in here
+
+we have a books and.
+
+Inside the book we have a category with flowers,
+
+so that means that we can actually access it.
+
+That book on the object if that's what we want
+
+to.
+
+We also saw that would actually after category we could
+
+write author.
+
+Let's just go check here.
+
+So we have the author right here.
+
+So let's say that I will mention an author.
+
+And I can write Mike right here.
+
+And then we can see now it gets 2 arguments
+
+that I can access to it.
+
+Book I could also access the author.
+
+So the mapping is object oriented and it's much easier
+
+to access while using @Locations that was it for this
+
+video.
+
+I hope you will follow me in the next video
+
+where we're looking at Routes with Request Parameters.
+
+Again this is about locations.
