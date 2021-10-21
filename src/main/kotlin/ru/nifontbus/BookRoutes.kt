@@ -6,19 +6,23 @@ import io.ktor.locations.*
 import io.ktor.request.*
 import io.ktor.response.*
 import io.ktor.routing.*
+import ru.nifontbus.model.Book
+import ru.nifontbus.model.DataManagerMongoDB
+import kotlin.math.log
 
 @KtorExperimentalLocationsAPI
 @Location("api/book/list")
-data class BookListLocation(val sortby: String, val asc: Boolean)
+data class BookListLocation(val sortby: String, val page: Int)
 
 @KtorExperimentalLocationsAPI
 fun Route.books() {
 
-    val dataManager = DataManager()
+    val dataManager = DataManagerMongoDB()
 
     authenticate("bookStoreAuth") {
+
         get<BookListLocation> {
-            call.respond(dataManager.sortedBooks(it.sortby, it.asc))
+            call.respond(dataManager.sortedBooks(it.sortby, it.page))
         }
     }
 
@@ -28,10 +32,10 @@ fun Route.books() {
         }
 
         post("/{id}") {
-//            val id = call.parameters["id"]
+            val id = call.parameters["id"]!!
             val book = call.receive<Book>()
-            val updateBook = dataManager.updateBook(book)
-            updateBook?.let { call.respond(it) }
+            val updateBook = dataManager.updateBook(id, book)
+            updateBook?.let { call.respond(it) } ?: call.respondText("Not Found")
         }
 
         put("") {
@@ -41,9 +45,10 @@ fun Route.books() {
         }
 
         delete("/{id}") {
-            val id = call.parameters["id"].toString()
+            val id = call.parameters["id"]!!
+            println("-----> id = $id")
             val deleteBook = dataManager.deleteBook(id)
-            deleteBook?.let { call.respond(it) }
+            deleteBook?.let { call.respond(it) } ?: call.respondText("Not Found")
         }
     }
 }

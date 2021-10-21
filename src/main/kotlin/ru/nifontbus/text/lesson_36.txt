@@ -1,0 +1,319 @@
+Hi, let us continue working on our book store application.
+
+We would like to replace the list that we have
+
+right now with a real Mongo database.
+
+So that agenda is we want to remove the list
+
+of books in the DataManager we want to replace the
+
+content in each function in the DataManager.
+
+So mongo DB is used instead of the lists.
+
+We want to replace the type of the id in
+
+the book class with object id.
+
+Currently the id is a string.
+
+The project is right here.
+
+I've added at Docker compose file right here so we
+
+have a local mongo database that we can work on.
+
+In the data model. I have changed the book class.
+
+Right here. So now the id is now an object
+
+id instead of a string I'm annotating it with Bson
+
+id,
+
+so there's no doubt in which field is actually the
+
+id.
+
+I have copied the data manager including all this function.
+
+And then I paste this to a new class named
+
+DataManager  Mongo DB and then I went through.
+
+this function one by one.
+
+And then I replaced the list that I removed the
+
+list totally and I replaced.
+
+I created a database and I created a collection,
+
+initialized that in the init method right here.
+
+And then I change the init book function.
+
+So now it inserts it by using the book collection
+
+instead and we're using null to begin with as id
+
+value because we will get the id from the Mongo
+
+database. Here we can see all the functions they are
+
+now using the collection instead of using the list.
+
+Delete book, All the books and the sorted books.
+
+In a sort of books I've prepared to this function
+
+for being extended bit later with page number and page
+
+size.
+
+That means that we can easily add some pagination later
+
+on if you want to right now it will show
+
+the first page and it will only give us 1000
+
+results in each page. And here we have the syntax
+
+itself.
+
+Find then sort it. And here we are using the
+
+sort by.
+
+That would get from the function argument.
+
+And then we skip the page until the page that
+
+we want.
+
+And then with limits, the extract with the page size
+
+and we converted to a list.
+
+But the reason why I commented the function in the
+
+data manager right now,
+
+that is because we have changed the id from being
+
+a string to being actually an object ID and that
+
+makes a lot of these functions not work.
+
+Because they expect string instead.
+
+So I've out commented most of the class already,
+
+but since now we have working DataManager Mongo db classes that
+
+then I can actually delete the data manager like this
+
+delete.
+
+In my book routes I've changed DataManager to be of type
+
+data manager Mongo DB instead of just the data manager.
+
+And we have the book list location right here and
+
+here we respond with the DataManager that's sorted books.
+
+Since we do not have any tests yet for this,
+
+then we need to use the curl.
+
+The script that we already have right here.
+
+So let us try to run the curl script.
+
+I have already started up the.
+
+The Docker container with Docker compose up and I've also
+
+started the Ktor application.
+
+So now let us try to run the curl command.
+
+And here we get the available books.
+
+We get the apples first before bananas etc.
+
+You can also solve them.
+
+By the other fields like author.
+
+But this shows. That the transformation we did actually works.
+
+So now we're using a Mongo database instead of just
+
+using a local list in our book store application.
+
+In
+
+the section to follow, we will test the Ktor application.
+
+Hi, let us continue working on our book store application.
+
+We would like to replace the list that we have
+
+right now with a real Mongo database.
+
+So that agenda is we want to remove the list
+
+of books in the DataManager we want to replace the
+
+content in each function in the DataManager.
+
+So mongo DB is used instead of the lists.
+
+We want to replace the type of the id in
+
+the book class with object id.
+
+Currently the id is a string.
+
+The project is right here.
+
+I've added at Docker compose file right here so we
+
+have a local mongo database that we can work on.
+
+In the data model. I have changed the book class.
+
+Right here. So now the id is now an object
+
+id instead of a string I'm annotating it with Bson
+
+id,
+
+so there's no doubt in which field is actually the
+
+id.
+
+I have copied the data manager including all this function.
+
+And then I paste this to a new class named
+
+DataManager  Mongo DB and then I went through.
+
+this function one by one.
+
+And then I replaced the list that I removed the
+
+list totally and I replaced.
+
+I created a database and I created a collection,
+
+initialized that in the init method right here.
+
+And then I change the init book function.
+
+So now it inserts it by using the book collection
+
+instead and we're using null to begin with as id
+
+value because we will get the id from the Mongo
+
+database. Here we can see all the functions they are
+
+now using the collection instead of using the list.
+
+Delete book, All the books and the sorted books.
+
+In a sort of books I've prepared to this function
+
+for being extended bit later with page number and page
+
+size.
+
+That means that we can easily add some pagination later
+
+on if you want to right now it will show
+
+the first page and it will only give us 1000
+
+results in each page. And here we have the syntax
+
+itself.
+
+Find then sort it. And here we are using the
+
+sort by.
+
+That would get from the function argument.
+
+And then we skip the page until the page that
+
+we want.
+
+And then with limits, the extract with the page size
+
+and we converted to a list.
+
+But the reason why I commented the function in the
+
+data manager right now,
+
+that is because we have changed the id from being
+
+a string to being actually an object ID and that
+
+makes a lot of these functions not work.
+
+Because they expect string instead.
+
+So I've out commented most of the class already,
+
+but since now we have working DataManager Mongo db classes that
+
+then I can actually delete the data manager like this
+
+delete.
+
+In my book routes I've changed DataManager to be of type
+
+data manager Mongo DB instead of just the data manager.
+
+And we have the book list location right here and
+
+here we respond with the DataManager that's sorted books.
+
+Since we do not have any tests yet for this,
+
+then we need to use the curl.
+
+The script that we already have right here.
+
+So let us try to run the curl script.
+
+I have already started up the.
+
+The Docker container with Docker compose up and I've also
+
+started the Ktor application.
+
+So now let us try to run the curl command.
+
+And here we get the available books.
+
+We get the apples first before bananas etc.
+
+You can also solve them.
+
+By the other fields like author.
+
+But this shows. That the transformation we did actually works.
+
+So now we're using a Mongo database instead of just
+
+using a local list in our book store application.
+
+In
+
+the section to follow, we will test the Ktor application.
