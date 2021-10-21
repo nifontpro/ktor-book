@@ -1,8 +1,6 @@
-package ru.nifontbus
+package ru.nifontbus.model
 
-import org.slf4j.LoggerFactory
-import kotlin.reflect.full.declaredMemberProperties
-
+/*
 class DataManager {
 
     private val log = LoggerFactory.getLogger(DataManager::class.java)
@@ -86,3 +84,4 @@ class DataManager {
         }
     }
 }
+*/
